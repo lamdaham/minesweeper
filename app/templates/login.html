@@ -1,0 +1,30 @@
+<html>
+
+  <head>
+    <title> Operation: White Hat </title>
+  </head>
+
+  <body>
+    <h1> Welcome to Operation: White Hat </h1>
+    <h2> A Minesweeper Game</h2>
+    <br>
+    <h3>
+      Login below (username, password):
+    </h3>
+    <form action="/authenticate" method="POST">
+      <input type="text" name="login_username">
+      <input type="password" name="login_password">
+      <input type="submit" name="sub1" value="Login">
+    </form>
+    <h3>
+        OR Register (username, password):
+    </h3>
+    <form action="/register" method="POST">
+        <input type="text" name="regular_username">
+        <input type="text" name="regular_password">
+        <input type="submit" name="sub2" value="Register">
+    </form>
+    <br>
+  </body>
+
+</html>
