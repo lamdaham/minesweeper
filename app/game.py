@@ -15,10 +15,12 @@ def myprint(array):
         row = str(n) + " "
         n += 1
         for elem in li:
-            if elem == None or elem == -1:
+            if elem == None:
                 row += "?"
             elif elem == "f":
                 row += "F"
+            elif elem == -1:
+                row += "M" if MODE=="admin" else "?"
             else:
                 row += str(elem)
             row += " "
@@ -169,5 +171,6 @@ class Game:
                 print("yay")
                 self.gameover = True
 
+MODE = input("Mode: ")
 game = Game()
 game.run()
