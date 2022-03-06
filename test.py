@@ -11,21 +11,29 @@ class Poll:
             for movie in self.selections.keys():
                 print(movie + ") " + self.selections[movie])
             
-            options = input("Ranking (i.e. a,b,c): ").lower().replace(" ", "").split(",")
+            while True:
+                options = input("Ranking (i.e. a,b,c): ").lower().replace(" ", "").split(",")
+                if not all(elem in options  for elem in list(self.selection_vals.keys())) or len(options) != len(self.selections):
+                    print("Ranking cannot have duplicates or missing selections.")
+                else:
+                    break
             
             for option in options:
                 self.selection_vals[option] += 3 - options.index(option)
 
             print("\n" * 30)
-    
+
+
     def results(self):
         print("Final Results: ")
-        sorted_vals = {k: v for k, v in sorted(self.selection_vals.items(), key=lambda item: item[1], reverse=True)}
-        for k, n in dict(zip(sorted_vals.keys(), range(1, len(self.selections) + 1))).items():
-            print(str(n) + ". " + self.selections[k])
+        vals = sorted([i for n, i in enumerate(list(self.selection_vals.values())) if i not in list(self.selection_vals.values())[:n]], reverse=True)
+        for i in range(len(vals)):
+            keys = [self.selections[k] for k in [k for k,v in self.selection_vals.items() if v == vals[i]]]
+            print(str(i + 1) + ". " + ", ".join(keys))
 
         print()
         if input("See raw? (y/n): ").lower().strip() == "y":
+            print(self.selections)
             print(self.selection_vals)
 
 if __name__ == "__main__":
