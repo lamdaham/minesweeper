@@ -1,5 +1,8 @@
 # Minesweeper | White Hat Edition
 
+## Description
+Traditional minesweeper game with a White Hat hacker theme, account features, and leaderboards.
+
 ## Collaborators
 Ivan Lam (PM) <br>
 Alejandro Alonso (Devo) <br>
@@ -12,4 +15,4 @@ Sadid Etham (Devo)
 ---
 ## Mentions
 Stuyvesant High School <br>
-Mr. Mykolyk <br>
+Prof. Mykolyk <br>
