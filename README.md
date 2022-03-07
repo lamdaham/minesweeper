@@ -1,4 +1,4 @@
-# Minesweeper | White Hat Edition
+# Minesweeper: White Hat Edition by Team Beautiful Men
 
 ## Description
 Traditional minesweeper game with a White Hat hacker theme, account features, and leaderboards.
