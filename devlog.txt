@@ -1,1 +1,19 @@
+Beautiful Men — Alejandro Alonso, Ivan Lam, Theo Fahey, Sadid Etham
+SoftDev
+P02
+2022-03-08
 
+Sample Entry: firstL -- TIMESTAMP\n ( e.g.: topherM -- 1999-12-31 23:59 )
+
+Begin Devlog:
+alejandroA -- 2022-02-03 10:17
+  Initial repo setup, flag added
+
+alejandroA -- 2022-02-04 9:30
+  Design doc written, templates + static
+
+alejandroA -- 2022-02-07 3:00
+  Base minesweeper code added
+
+alejandroA -- 2022-02-08 9:00
+  Set up devlog, create requirements.txt, remove test.py
