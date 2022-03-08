@@ -8,23 +8,22 @@ None: uncovered spot
 
 import random
 
-def myprint(array):
-    print("  0 1 2 3 4 5 6 7 8")
+def adjusted_board(arr):
     n = 0
-    for li in array:
-        row = str(n) + " "
-        n += 1
+    new_arr = []
+    for li in arr:
+        new_li = []
         for elem in li:
             if elem == None:
-                row += "?"
+                li.append("?")
             elif elem == "f":
-                row += "F"
+                li.append("F")
             elif elem == -1:
-                row += "M" if MODE=="admin" else "?"
+                li.append("M" if MODE=="admin" else "?")
             else:
-                row += str(elem)
-            row += " "
-        print(row)
+                li.append(str(elem))
+        new_arr.append(new_li)
+    return new_arr
 
 def create_board(width, height):
     gameboard = []
@@ -143,7 +142,7 @@ class Game:
         else:
             self.unflagged_mines.append(y)
             self.gameboard[y][x] = self.original[(x,y)]
-        myprint(self.gameboard)
+        return adjusted_board(self.gameboard)
     def uncover(self, x, y):
         Cell = self.gameboard[y][x]
         if Cell == -1:
@@ -151,8 +150,7 @@ class Game:
             return True
         else:
             uncover_board(self.gameboard, x, y)
-            myprint(self.gameboard)
-            return False
+            return False, adjusted_board(self.gameboard)
     
     def run(self):
         while not self.gameover:
@@ -163,13 +161,15 @@ class Game:
                 if self.first_uncover:
                     bury_mines(self.gameboard, 10, x, y)
                     self.first_uncover = False
-                self.gameover = self.uncover(x, y)
+                self.gameover, gui_board = self.uncover(x, y)
             else:
                 self.Flag(x, y)
             
             if self.flagged_mines == 10:
                 print("yay")
                 self.gameover = True
+            
+            print(gui_board)
 
 MODE = input("Mode: ")
 game = Game()
