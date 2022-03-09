@@ -7,23 +7,44 @@ None: uncovered spot
 """
 
 import random
+IMG_CODES = {
+    "0": "zero",
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    "F": "flag",
+    "M": "mine",
+    "?": "uncovered"
+}
 
+def myprint(arr):
+    for li in arr:
+        print(" ".join(li))
+            
 def adjusted_board(arr):
-    n = 0
-    new_arr = []
+    forprint_arr = []
     for li in arr:
         new_li = []
         for elem in li:
             if elem == None:
-                li.append("?")
+                new_li.append("?")
             elif elem == "f":
-                li.append("F")
+                new_li.append("F")
             elif elem == -1:
-                li.append("M" if MODE=="admin" else "?")
+                new_li.append("M" if MODE=="admin" else "?")
             else:
-                li.append(str(elem))
-        new_arr.append(new_li)
-    return new_arr
+                new_li.append(str(elem))
+        forprint_arr.append(new_li)
+    
+    forweb_arr = []
+    for li in forprint_arr:
+        new_li = []
+        for elem in li:
+            new_li.append(IMG_CODES[elem])
+        forweb_arr.append(new_li)
+    return forprint_arr
 
 def create_board(width, height):
     gameboard = []
@@ -153,6 +174,7 @@ class Game:
             return False, adjusted_board(self.gameboard)
     
     def run(self):
+        myprint(adjusted_board(self.gameboard))
         while not self.gameover:
             x = int(input("X of Spot: "))
             y = int(input("Y of Spot: "))
@@ -169,7 +191,7 @@ class Game:
                 print("yay")
                 self.gameover = True
             
-            print(gui_board)
+            myprint(gui_board)
 
 MODE = input("Mode: ")
 game = Game()
