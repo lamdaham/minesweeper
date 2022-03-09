@@ -44,6 +44,7 @@ def adjusted_board(arr):
         for elem in li:
             new_li.append(IMG_CODES[elem])
         forweb_arr.append(new_li)
+
     return forprint_arr
 
 def create_board(width, height):
