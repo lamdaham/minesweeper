@@ -33,7 +33,7 @@ def adjusted_board(arr):
             elif elem == "f":
                 new_li.append("F")
             elif elem == -1:
-                new_li.append("M" if MODE=="admin" else "?")
+                new_li.append("M" if USER=="admin" else "?")
             else:
                 new_li.append(str(elem))
         forprint_arr.append(new_li)
@@ -42,7 +42,7 @@ def adjusted_board(arr):
     for li in forprint_arr:
         new_li = []
         for elem in li:
-            new_li.append(IMG_CODES[elem])
+            new_li.append(MODE + "_" + IMG_CODES[elem] + ".png")
         forweb_arr.append(new_li)
 
     return forprint_arr
@@ -176,6 +176,7 @@ class Game:
     
     def run(self):
         myprint(adjusted_board(self.gameboard))
+        
         while not self.gameover:
             x = int(input("X of Spot: "))
             y = int(input("Y of Spot: "))
@@ -194,6 +195,7 @@ class Game:
             
             myprint(gui_board)
 
-MODE = input("Mode: ")
+USER = input("Mode: ")
+MODE = input("dark/light: ")
 game = Game()
 game.run()
