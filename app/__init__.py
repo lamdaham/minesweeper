@@ -9,6 +9,13 @@ def login():
     except:
         return render_template("error.html")
 
+@app.route('/register')
+def register():
+    try:
+        return render_template("register.html")
+    except:
+        return render_template("error.html")
+
 @app.route('/loading')
 def load():
     try:
