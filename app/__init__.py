@@ -13,7 +13,7 @@ def login():
     # Check for session existance
     if method == 'GET':
         if logged_in():
-            return redirect('/gamepage')
+            return redirect('/menu')
         else:
         # If not logged in, show login page
             return render_template('login.html', error=False)
@@ -30,7 +30,7 @@ def login():
     else:
     # Store user info into a cookie
         session['username'] = username
-        return redirect('/')
+        return redirect('/menu')
 
 @app.route('/register', methods=['GET','POST'])
 def register():
@@ -65,7 +65,7 @@ def register():
             return render_template("register.html", error_message=error_message)
         else:
             session['username'] = new_username
-            return redirect('/game')
+            return redirect('/')
 
 @app.route('/loading')
 def load():
