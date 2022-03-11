@@ -1,7 +1,7 @@
 # Minesweeper: White Hat Edition by Team Beautiful Men
 
 ## Description
-Traditional minesweeper game with a White Hat hacker theme, account features, and leaderboards.
+Traditional minesweeper game with a White Hat hacker theme, account functionality, light/dark mode, and leaderboards.
 
 ## Collaborators
 Ivan Lam (PM) <br>
