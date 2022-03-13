@@ -193,9 +193,7 @@ class Game:
                 print("yay")
                 self.gameover = True
             
-            myprint(gui_board)
+            # myprint(gui_board)
 
 USER = input("Mode: ")
 MODE = input("dark/light: ")
-game = Game()
-game.run()
