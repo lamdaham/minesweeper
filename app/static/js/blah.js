@@ -282,7 +282,7 @@ function display(arr){
 
 function run() {
   var choice, gui_board, x, y;
-  display(adjusted_board(gameboard));
+  display(adjusted_board(gameboard)); //change with myprint for console
 
   x = 0;
   y = 0;
@@ -304,7 +304,7 @@ function run() {
       gameover = true;
   }
   
-  display(gui_board);
+  display(gui_board); //change with myprint for console
 }
 
 run()
