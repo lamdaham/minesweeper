@@ -68,6 +68,16 @@ def register():
             session['username'] = new_username
             return redirect('/')
 
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+
+    # Once again check for a key before popping it
+    if logged_in():
+        session.pop('username')
+
+    # After logout, return to login page
+    return redirect('/')
+
 @app.route('/loading')
 def load():
     try:
@@ -85,7 +95,10 @@ def menu():
 @app.route('/gamepage')
 def about():
     try:
-        return render_template("gamepage.html")
+        if logged_in():
+            return render_template("gamepage.html")
+        else:
+            return redirect('/')
     except:
         return render_template("error.html")
         
