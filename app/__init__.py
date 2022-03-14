@@ -85,8 +85,6 @@ def menu():
 @app.route('/gamepage')
 def about():
     try:
-        game = Game()
-        game.run()
         return render_template("gamepage.html")
     except:
         return render_template("error.html")

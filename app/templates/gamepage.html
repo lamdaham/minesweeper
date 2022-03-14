@@ -1,11 +1,20 @@
+<!DOCTYPE html>
 <html>
-
   <head>
-    <title> Operation: White Hat </title>
+    <title>Minesweeper</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="app/static/css/index.css" type="text/css">
+    <script type="text/javascript" src="app/static/js/index.js"></script>
   </head>
-
   <body>
-      <dropdown> DIFFICULTY </dropdown> <!-- I'm Good At Wordle (Beginner), I'm Passing AP Physics C (Medium), I took tests honestly in Virtual (Hard) -->
+      <div id="box">
+         <h2>MINESWEEPER!</h2><hr><br><br>
+            <div id="field"></div>
+            <br>
+          <div id="lost" style="display: none;">
+            <h3>You got bombed!</h3>
+            <button id="new-game-button" type="button" onclick="reload()">Start Again</button>
+          </div>         
+      </div>
   </body>
-
 </html>
