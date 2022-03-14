@@ -169,7 +169,7 @@ class Game:
         Cell = self.gameboard[y][x]
         if Cell == -1:
             print("game over")
-            return True
+            return True, adjusted_board(self.gameboard)
         else:
             uncover_board(self.gameboard, x, y)
             return False, adjusted_board(self.gameboard)
