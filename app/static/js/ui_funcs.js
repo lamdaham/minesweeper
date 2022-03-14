@@ -1,9 +1,13 @@
-var gameboard = create_board(9, 9)
-var flagged_mines = 0
-var unflagged_mines = []
-var original = {}
-var gameover = False
-var first_uncover = True
+var gameboard;
+var flagged_mines = 0;
+var unflagged_mines = [];
+var original = {};
+var gameover = False;
+var first_uncover = True;
+
+var displayGameboard = (dimensions) => {
+    create_board(dimensions[0], dimensions[1])
+}
 
 var flag = (e) => {
 
