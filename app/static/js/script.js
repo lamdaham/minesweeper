@@ -268,6 +268,8 @@ if (Cell === -1) {
 }
 }
 
+// THIS SHOULD BE DELETED AFTER CLICK FUNCTIONS ARE WORKING
+
 function run() {
   var choice, gui_board, x, y;
   display(adjusted_board(gameboard));
@@ -293,6 +295,26 @@ function run() {
   }
   
   display(gui_board);
+}
+
+// THIS IS WHAT NEEDS CHANGING
+
+function rightclick(e){
+  var mouse_x = ;
+  var mouse_y = ;
+  if (first_uncover) {
+    gameboard = bury_mines(gameboard, 10, x, y);
+    first_uncover = false;
+  }
+  gameover, gameboard = uncover(x, y); //i and j of the gameboard array
+  display(gameboard);
+}
+
+function leftclick(e){
+  var mouse_x = ;
+  var mouse_y = ;
+  gameover, gameboard = flag(x, y); //i and j of the gameboard array
+  display(gameboard);
 }
 
 function display(arr){
