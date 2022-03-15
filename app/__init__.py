@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import db_builder
-from game import Game
 
 app = Flask(__name__)
 app.secret_key = 'minesweeper'
