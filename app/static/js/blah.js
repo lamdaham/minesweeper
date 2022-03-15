@@ -14,12 +14,12 @@ IMG_CODES = {
   "5": "five",
   "F": "flag",
   "M": "mine",
-  "?": "uncovered"
+  "?": "covered"
 }
           
 function adjusted_board(arr) {
   var forprint_arr, forweb_arr, new_li;
-  forprint_arr = [];
+  forweb_arr = [];
 
   for (var li, _pj_c = 0, _pj_a = arr, _pj_b = _pj_a.length; _pj_c < _pj_b; _pj_c += 1) {
     li = _pj_a[_pj_c];
@@ -28,23 +28,23 @@ function adjusted_board(arr) {
     for (var elem, _pj_f = 0, _pj_d = li, _pj_e = _pj_d.length; _pj_f < _pj_e; _pj_f += 1) {
       elem = _pj_d[_pj_f];
       if (elem === "blank") {
-        new_li.push("?");
+        new_li.push(MODE + "_" + IMG_CODES["?"] + ".png");
       } else {
         if (elem === "f") {
-          new_li.push("F");
+          new_li.push(MODE + "_" + IMG_CODES["F"] + ".png");
         } else {
           if (elem === -1) {
-            new_li.push(USER === "admin" ? "M" : "?");
+            new_li.push(MODE + "_" + IMG_CODES[USER === "admin" ? "M" : "?"] + ".png");
           } else {
-            new_li.push(elem.toString());
+            new_li.push(MODE + "_" + IMG_CODES[elem.toString()] + ".png");
           }
         }
       }
     }
-
-    forprint_arr.push(new_li);
+    forweb_arr.push(new_li);
   }
-  return forprint_arr;
+  
+  return forweb_arr;
 }
 
 function create_board(width, height) {
@@ -268,22 +268,6 @@ if (Cell === -1) {
 }
 }
 
-function display(arr){
-	var wrapper = document.getElementById("board");
-
-  var myHTML = '';
-  
-  for (let i = 0; i < arr.length; i++) {
-      myHTML += "<tr>"
-      for (let j = 0; j < arr[i].length; j++) {
-      	myHTML += "<td>" + arr[i][j] + "</td>"
-      }
-      myHTML += "</tr>"
-  }
-
-  wrapper.innerHTML = myHTML
-}
-
 function run() {
   var choice, gui_board, x, y;
   display(adjusted_board(gameboard));
@@ -309,6 +293,22 @@ function run() {
   }
   
   display(gui_board);
+}
+
+function display(arr){
+	var wrapper = document.getElementById("board");
+
+  var myHTML = '';
+  
+  for (let i = 0; i < arr.length; i++) {
+      myHTML += "<tr>"
+      for (let j = 0; j < arr[i].length; j++) {
+      	myHTML += "<td>" + arr[i][j] + "</td>"
+      }
+      myHTML += "</tr>"
+  }
+
+  wrapper.innerHTML = myHTML
 }
 
 run()
