@@ -303,7 +303,7 @@ function display(arr){
   for (let i = 0; i < arr.length; i++) {
       myHTML += "<tr>"
       for (let j = 0; j < arr[i].length; j++) {
-      	myHTML += "<td>" + arr[i][j] + "</td>"
+      	myHTML += "<td> <img src='static/images/" + arr[i][j] + "' style='width: 100%;'></img></td>"
       }
       myHTML += "</tr>"
   }
