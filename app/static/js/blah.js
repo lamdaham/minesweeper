@@ -269,12 +269,16 @@ if (Cell === -1) {
 }
 
 function display(arr){
-	var wrapper = document.getElementById("myHTMLWrapper");
+	var wrapper = document.getElementById("board");
 
   var myHTML = '';
   
   for (let i = 0; i < arr.length; i++) {
-      myHTML += '<span class="test">' + arr[i].join(" ") + '</span><br/>';
+      myHTML += "<tr>"
+      for (let j = 0; j < arr[i].length; j++) {
+      	myHTML += "<td>" + arr[i][j] + "</td>"
+      }
+      myHTML += "</tr>"
   }
 
   wrapper.innerHTML = myHTML
@@ -282,7 +286,7 @@ function display(arr){
 
 function run() {
   var choice, gui_board, x, y;
-  display(adjusted_board(gameboard)); //change with myprint for console
+  display(adjusted_board(gameboard));
 
   x = 0;
   y = 0;
@@ -304,7 +308,7 @@ function run() {
       gameover = true;
   }
   
-  display(gui_board); //change with myprint for console
+  display(gui_board);
 }
 
 run()
