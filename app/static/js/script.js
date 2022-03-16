@@ -236,7 +236,7 @@ function myprint(arr) {
   } 
 }
 
-function Flag(x, y) {
+function flag(x, y) {
   if (gameboard[y][x] !== "f" && gameboard[y][x] !== "F") {
     original[[x, y]] = gameboard[y][x];
 
@@ -338,6 +338,21 @@ document.addEventListener("DOMContentLoaded", function() {
     vals = uncover(mouse_x, mouse_y); //i and j of the gameboard array
     gameover = vals[0];
     gameboard = vals[1]
+    display(gameboard);
+  });
+})
+
+document.addEventListener("DOMContentLoaded", function() {
+  var tbody = document.querySelector('#board tbody');
+  tbody.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    const cell = e.target.closest('td');
+    if (!cell) {return;} // Quit, not clicked on a cell
+    const row = cell.parentElement;
+    const mouse_y = row.rowIndex;
+    const mouse_x = cell.cellIndex;
+
+    gameboard = flag(mouse_x, mouse_y); //i and j of the gameboard array
     display(gameboard);
   });
 })
