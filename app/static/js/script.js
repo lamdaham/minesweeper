@@ -223,7 +223,7 @@ function uncover_board(gameboard, x, y) {
 
 var gameboard = create_board(9, 9);
 var USER = "norm"
-var MODE = "dark"
+var MODE = "light"
 var flagged_mines = 0;
 var unflagged_mines = [];
 var original = {};
@@ -236,7 +236,7 @@ function myprint(arr) {
   } 
 }
 
-function flag(x, y) {
+function flag(gameboard, x, y) {
   if (gameboard[y][x] !== "f" && gameboard[y][x] !== "F") {
     original[[x, y]] = gameboard[y][x];
 
@@ -247,26 +247,25 @@ function flag(x, y) {
       gameboard[y][x] = "f";
     }
   } else {
-    unflagged_mines.append(y);
+    unflagged_mines.push(y);
     gameboard[y][x] = original[[x, y]];
   }
 
-  return adjusted_board(gameboard);
+  return gameboard;
 }
 
 
-function uncover(x, y) {
-var Cell;
-Cell = gameboard[y][x];
-
-if (Cell === -1) {
-  return [true, adjusted_board(gameboard)];
-} else {
-  uncover_board(gameboard, x, y);
-  return [false, adjusted_board(gameboard)];
+function uncover(gameboard, x, y) {
+  var Cell;
+  Cell = gameboard[y][x];
+  
+  if (Cell === -1) {
+    return [true, gameboard]
+  } else {
+    uncover_board(gameboard, x, y);
+    return [false, gameboard];
+  }
 }
-}
-
 // THIS SHOULD BE DELETED AFTER CLICK FUNCTIONS ARE WORKING
 
 /*
@@ -318,41 +317,45 @@ function display(arr){
       myHTML += "</tr>"
   }
 
-  wrapper.innerHTML = myHTML
+  wrapper.insertAdjacentHTML("beforeend", myHTML)
+}
+
+function alter_board(arr){
+	var wrapper = document.getElementById("board");
+  for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr[i].length; j++) {
+      	wrapper.rows[j].cells[i].innerHTML = "<td> <img src='static/images/" + arr[i][j] + "' style='width: 100%;'></img></td>"
+      }
+  }
 }
 
 display(adjusted_board(gameboard));
 
-document.addEventListener("DOMContentLoaded", function() {
-  var tbody = document.querySelector('#board tbody');
-  tbody.addEventListener('click', function (e) {
-    const cell = e.target.closest('td');
-    if (!cell) {return;} // Quit, not clicked on a cell
-    const row = cell.parentElement;
-    const mouse_y = row.rowIndex;
-    const mouse_x = cell.cellIndex;
-    if (first_uncover) {
-      gameboard = bury_mines(gameboard, 10, mouse_x, mouse_y);
-      first_uncover = false;
-    }
-    vals = uncover(mouse_x, mouse_y); //i and j of the gameboard array
-    gameover = vals[0];
-    gameboard = vals[1]
-    display(gameboard);
-  });
-})
+const tbody = document.querySelector('#board tbody');
+tbody.addEventListener('click', function (e) {
+  const cell = e.target.closest('td');
+  if (!cell) {return;} // Quit, not clicked on a cell
+  const row = cell.parentElement;
+  const mouse_x = row.rowIndex;
+  const mouse_y = cell.cellIndex;
+  if (first_uncover) {
+    gameboard = bury_mines(gameboard, 10, mouse_x, mouse_y);
+    first_uncover = false;
+  }
+  vals = uncover(gameboard, mouse_x, mouse_y); //i and j of the gameboard array
+  gameover = vals[0];
+  gameboard = vals[1];
+  alter_board(adjusted_board(gameboard));
+});
 
-document.addEventListener("DOMContentLoaded", function() {
-  var tbody = document.querySelector('#board tbody');
-  tbody.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-    const cell = e.target.closest('td');
-    if (!cell) {return;} // Quit, not clicked on a cell
-    const row = cell.parentElement;
-    const mouse_y = row.rowIndex;
-    const mouse_x = cell.cellIndex;
+tbody.addEventListener('contextmenu', function (e) {
+  e.preventDefault();
+  const cell = e.target.closest('td');
+  if (!cell) {return;} // Quit, not clicked on a cell
+  const row = cell.parentElement;
+  const mouse_x = row.rowIndex;
+  const mouse_y = cell.cellIndex;
 
-    gameboard = flag(mouse_x, mouse_y); //i and j of the gameboard array
-    display(gameboard);
-  });
-})
+  gameboard = flag(gameboard, mouse_x, mouse_y); //i and j of the gameboard array
+  alter_board(adjusted_board(gameboard));
+});

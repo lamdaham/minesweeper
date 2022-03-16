@@ -10,23 +10,6 @@ h2, h3{
     text-align: center;
 }
 
-#field table {
-    border-collapse: collapse;
-    font-size: 150%;
-    font-family: san-serif;
-    font-weight: bold;
-    display: inline-block;
-}
-
-#field table td {
-    background-color: rgb(195, 195, 195);
-    width: 30px;
-    min-width: 30px;
-    height: 30px;
-    min-height: 30px;
-    border: 1px solid black;    
-}
-
 button {
     width: 100px;
     height: 30px;
