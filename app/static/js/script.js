@@ -260,7 +260,6 @@ var Cell;
 Cell = gameboard[y][x];
 
 if (Cell === -1) {
-  console.log("game over");
   return [true, adjusted_board(gameboard)];
 } else {
   uncover_board(gameboard, x, y);
@@ -270,20 +269,20 @@ if (Cell === -1) {
 
 // THIS SHOULD BE DELETED AFTER CLICK FUNCTIONS ARE WORKING
 
+/*
 function run() {
   var choice, gui_board, x, y;
   display(adjusted_board(gameboard));
 
   x = 0;
   y = 0;
-  choice = "uncover"
+  choice = "uncover";
   
   if (choice === "uncover") {
       if (first_uncover) {
         gameboard = bury_mines(gameboard, 10, x, y);
         first_uncover = false;
       }
-  
       [gameover, gui_board] = uncover(x, y);
   } else {
       new Flag(x, y);
@@ -295,27 +294,16 @@ function run() {
   }
   
   display(gui_board);
-}
+}*/
 
 // THIS IS WHAT NEEDS CHANGING
 
-function rightclick(e){
-  var mouse_x = ;
-  var mouse_y = ;
-  if (first_uncover) {
-    gameboard = bury_mines(gameboard, 10, x, y);
-    first_uncover = false;
-  }
-  gameover, gameboard = uncover(x, y); //i and j of the gameboard array
-  display(gameboard);
-}
-
-function leftclick(e){
+/*function leftclick(e){
   var mouse_x = ;
   var mouse_y = ;
   gameover, gameboard = flag(x, y); //i and j of the gameboard array
   display(gameboard);
-}
+}*/
 
 function display(arr){
 	var wrapper = document.getElementById("board");
@@ -333,4 +321,23 @@ function display(arr){
   wrapper.innerHTML = myHTML
 }
 
-run()
+display(adjusted_board(gameboard));
+
+document.addEventListener("DOMContentLoaded", function() {
+  var tbody = document.querySelector('#board tbody');
+  tbody.addEventListener('click', function (e) {
+    const cell = e.target.closest('td');
+    if (!cell) {return;} // Quit, not clicked on a cell
+    const row = cell.parentElement;
+    const mouse_y = row.rowIndex;
+    const mouse_x = cell.cellIndex;
+    if (first_uncover) {
+      gameboard = bury_mines(gameboard, 10, mouse_x, mouse_y);
+      first_uncover = false;
+    }
+    vals = uncover(mouse_x, mouse_y); //i and j of the gameboard array
+    gameover = vals[0];
+    gameboard = vals[1]
+    display(gameboard);
+  });
+})
