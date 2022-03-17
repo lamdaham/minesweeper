@@ -221,13 +221,30 @@ function uncover_board(gameboard, x, y) {
   }
 }
 
-var gameboard = create_board(9, 9);
-var USER = "admin"
-var MODE = "light"
+var gameboard, USER, MODE, num_of_mines;
 var flagged_mines = 0;
 var original = {};
 var gameover = false;
 var first_uncover = true;
+
+function setupVars(difficulty, user_privileges, background_mode){
+  USER = user_privileges;
+  MODE = background_mode;
+  if (difficulty === "script kiddie") {
+    gameboard = create_board(9,9);
+    num_of_mines = 10;
+  } else if (difficulty === "code monkey") {
+    gameboard = create_board(16,16);
+    num_of_mines = 40;
+  } else if (difficulty === "master devo") {
+    gameboard = create_board(30,16);
+    num_of_mines = 99;
+  } else {
+    throw Error("something went wrong");
+  }
+}
+
+setupVars("script kiddie", "admin", "light")
 
 function myprint(arr) {
   for (let i = 0; i < arr.length; i++) {
@@ -340,7 +357,7 @@ tbody.addEventListener('click', function (e) {
   const mouse_x = row.rowIndex;
   const mouse_y = cell.cellIndex;
   if (first_uncover) {
-    gameboard = bury_mines(gameboard, 10, mouse_x, mouse_y);
+    gameboard = bury_mines(gameboard, num_of_mines, mouse_x, mouse_y);
     first_uncover = false;
   }
   vals = uncover(gameboard, mouse_x, mouse_y); //i and j of the gameboard array

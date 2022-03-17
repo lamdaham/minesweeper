@@ -105,6 +105,7 @@ def about():
 def won():
     try:
         if logged_in():
+            #increase win streak by one
             return render_template("won.html")
         else:
             return redirect('/')
@@ -115,9 +116,20 @@ def won():
 def lost():
     try:
         if logged_in():
+            #set win streak to zero
             return render_template("lost.html")
         else:
             return redirect('/')
+    except:
+        return render_template("error.html")
+
+@app.route('/settings')
+def settings():
+    try:
+        if logged_in():
+            return render_template("settings.html")
+        else:
+            return redirect("/")
     except:
         return render_template("error.html")
         

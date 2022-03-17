@@ -13,32 +13,31 @@
   border: 1px solid black;
 }
     </style>
+        <meta charset="utf-8" />
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Login</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/register">Register</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/menu">Menu</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/gamepage">Game</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
   </head>
-  <body style="background: #ffffff;">
-    <meta charset="utf-8" />
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Login</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/register">Register</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/menu">Menu</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/gamepage">Game</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/logout">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <br>
+  <body style="background: #ffffff; color: black;">
     <table id="board"></table>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
