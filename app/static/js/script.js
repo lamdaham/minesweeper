@@ -222,10 +222,9 @@ function uncover_board(gameboard, x, y) {
 }
 
 var gameboard = create_board(9, 9);
-var USER = "norm"
+var USER = "admin"
 var MODE = "light"
 var flagged_mines = 0;
-var unflagged_mines = [];
 var original = {};
 var gameover = false;
 var first_uncover = true;
@@ -243,11 +242,13 @@ function flag(gameboard, x, y) {
     if (gameboard[y][x] === -1) {
       gameboard[y][x] = "F";
       flagged_mines += 1;
-    } else {
+    } else if (gameboard[y][x] === "blank") {
       gameboard[y][x] = "f";
     }
   } else {
-    unflagged_mines.push(y);
+    if (gameboard[y][x] == "F"){
+      flagged_mines -= 1;
+    }
     gameboard[y][x] = original[[x, y]];
   }
 
@@ -345,6 +346,9 @@ tbody.addEventListener('click', function (e) {
   vals = uncover(gameboard, mouse_x, mouse_y); //i and j of the gameboard array
   gameover = vals[0];
   gameboard = vals[1];
+  if (gameover) {
+    window.location.replace("/lost")
+  }
   alter_board(adjusted_board(gameboard));
 });
 
@@ -357,5 +361,8 @@ tbody.addEventListener('contextmenu', function (e) {
   const mouse_y = cell.cellIndex;
 
   gameboard = flag(gameboard, mouse_x, mouse_y); //i and j of the gameboard array
+  if (flagged_mines === 10) {
+    window.location.replace("/won");
+  }
   alter_board(adjusted_board(gameboard));
 });
