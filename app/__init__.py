@@ -100,6 +100,26 @@ def about():
             return redirect('/')
     except:
         return render_template("error.html")
+
+@app.route('/won')
+def won():
+    try:
+        if logged_in():
+            return render_template("won.html")
+        else:
+            return redirect('/')
+    except:
+        return render_template("error.html")
+
+@app.route('/lost')
+def lost():
+    try:
+        if logged_in():
+            return render_template("lost.html")
+        else:
+            return redirect('/')
+    except:
+        return render_template("error.html")
         
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
