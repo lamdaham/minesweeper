@@ -139,7 +139,7 @@ def lost():
     except:
         return render_template("error.html")
 
-@app.route('/settings')
+@app.route('/settings', methods=['GET', 'POST'])
 def settings():
     try:
         if logged_in():
@@ -151,6 +151,35 @@ def settings():
             return redirect("/")
     except:
         return render_template("error.html")
+
+@app.route('/change_diff', methods=['GET', 'POST'])
+def result():
+    try:
+        if logged_in():
+            user = session.get("username")
+            diff = request.form['button']
+            db_builder.change_difficulty(user, diff)
+            mode = db_builder.get_mode(user)[0]
+            colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
+            return render_template("settings.html", colors = colors)
+        else:
+            return redirect("/")
+    except:
+        return render_template("error.html")
+
+@app.route('/change_mode', methods=['GET', 'POST'])
+def other_result():
+    #try:
+        if logged_in():
+            user = session.get("username")
+            db_builder.change_mode(user)
+            mode = db_builder.get_mode(user)[0]
+            colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
+            return render_template("settings.html", colors = colors)
+        else:
+            return redirect("/")
+    #except:
+        #return render_template("error.html")
         
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified

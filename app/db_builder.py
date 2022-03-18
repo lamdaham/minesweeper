@@ -71,7 +71,7 @@ def change_mode(username):
   c.execute("""SELECT mode FROM user WHERE username=?""",[username])
   result = c.fetchone()
 
-  if result == "dark":
+  if result[0] == "dark":
     c.execute('UPDATE user SET mode = ? WHERE username = ?', ("light", username))
   else:
     c.execute('UPDATE user SET mode = ? WHERE username = ?', ("dark", username))

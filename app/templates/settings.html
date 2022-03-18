@@ -34,7 +34,15 @@
   </head>
 
   <body style="background: {{colors[0]}}; color: {{colors[1]}};">
-    <!-- buttons for dark mode, difficulty level -->
+    <h1>Light/Dark Mode: </h1>
+    <form action="/change_mode" method="post">
+      <button name="button" type="submit">Change</button>
+    </form>
+    <h1>Set Difficulty: </h1>
+    <form action="/change_diff" method="post">
+      <button name="button" type="submit" value="script kiddie">Script Kiddie</button>
+      <button name="button" type="submit" value="code monkey">Code Monkey</button>
+    </form>
   </body>
 
 </html>
