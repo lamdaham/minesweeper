@@ -244,7 +244,7 @@ function setupVars(difficulty, user_privileges, background_mode){
   }
 }
 
-setupVars("script kiddie", "admin", "light")
+setupVars(varone, vartwo, varthree)
 
 function myprint(arr) {
   for (let i = 0; i < arr.length; i++) {
