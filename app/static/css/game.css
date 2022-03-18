@@ -1,0 +1,8 @@
+table {
+  table-layout: fixed;
+  width: 70%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+  margin-right: auto;
+  margin-bottom: auto;
+}
