@@ -14,18 +14,14 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Login</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/register">Register</a>
-          </li>
           <li class="nav-item active">
             <a class="nav-link" href="/menu">Menu</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="/gamepage">Game</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/settings">Settings</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="/logout">Logout</a>
@@ -37,11 +33,11 @@
     <title> Operation: White Hat </title>
   </head>
 
-  <body style="background: #ffffff; color: black;">
-    <div class="accordion" id="accordionExample">
-      <div class="accordion-item">
+  <body style="background: {{colors[0]}}; color: {{colors[1]}};">
+    <div class="accordion" id="accordionPanelsStayOpenExample" style="background-color: inherit;">
+      <div class="accordion-item" style="background-color: inherit;">
         <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size: 20px;">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size: 20px; background-color: inherit; color: inherit">
             Who We Are
           </button>
         </h2>
@@ -51,9 +47,9 @@
           </div>
         </div>
       </div>
-      <div class="accordion-item">
+      <div class="accordion-item" style="background-color: inherit;">
         <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="font-size: 20px;">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="font-size: 20px; background-color: inherit; color: inherit">
             About the Game
           </button>
         </h2>
@@ -63,9 +59,9 @@
           </div>
         </div>
       </div>
-      <div class="accordion-item">
+      <div class="accordion-item" style="background-color: inherit;">
         <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="font-size: 20px;">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="font-size: 20px; background-color: inherit; color: inherit">
             How to Play
           </button>
         </h2>
