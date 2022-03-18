@@ -77,17 +77,23 @@ def logout():
     # After logout, return to login page
     return redirect('/')
 
-@app.route('/loading')
-def load():
+@app.route('/home')
+def home():
     try:
-        return render_template("load.html")
+        return render_template("home.html")
     except:
         return render_template("error.html")
 
 @app.route('/menu')
 def menu():
     try:
-        return render_template("menu.html")
+        if logged_in():
+            user = session.get("username")
+            mode = db_builder.get_mode(user)[0]
+            colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
+            return render_template("menu.html", colors = colors)
+        else:
+            return redirect('/')
     except:
         return render_template("error.html")
 
@@ -95,7 +101,11 @@ def menu():
 def about():
     try:
         if logged_in():
-            return render_template("gamepage.html")
+            user = session.get("username")
+            mode = db_builder.get_mode(user)[0]
+            difficulty = db_builder.get_difficulty(user)[0]
+            colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
+            return render_template("gamepage.html", mode = mode, user_priv = user, difficulty = difficulty, colors = colors)
         else:
             return redirect('/')
     except:
@@ -106,7 +116,10 @@ def won():
     try:
         if logged_in():
             #increase win streak by one
-            return render_template("won.html")
+            user = session.get("username")
+            mode = db_builder.get_mode(user)[0]
+            colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
+            return render_template("won.html", colors = colors)
         else:
             return redirect('/')
     except:
@@ -117,7 +130,10 @@ def lost():
     try:
         if logged_in():
             #set win streak to zero
-            return render_template("lost.html")
+            user = session.get("username")
+            mode = db_builder.get_mode(user)[0]
+            colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
+            return render_template("lost.html", colors = colors)
         else:
             return redirect('/')
     except:
@@ -127,7 +143,10 @@ def lost():
 def settings():
     try:
         if logged_in():
-            return render_template("settings.html")
+            user = session.get("username")
+            mode = db_builder.get_mode(user)[0]
+            colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
+            return render_template("settings.html", colors = colors)
         else:
             return redirect("/")
     except:
