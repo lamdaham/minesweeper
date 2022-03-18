@@ -17,18 +17,14 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/">Login</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/register">Register</a>
-              </li>
               <li class="nav-item active">
                 <a class="nav-link" href="/menu">Menu</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="/gamepage">Game</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/settings">Settings</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="/logout">Logout</a>
@@ -37,8 +33,13 @@
           </div>
         </nav>
   </head>
-  <body style="background: #ffffff; color: black;">
+  <body style="background: {{colors[0]}}; color: {{colors[1]}};">
     <table id="board"></table>
+    <script>
+      var varone = {{ difficulty|tojson }}
+      var vartwo = {{ user_priv|tojson }};
+      var varthree = {{ mode|tojson }};
+    </script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
 </html>
