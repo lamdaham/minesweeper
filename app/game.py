@@ -197,3 +197,4 @@ class Game:
 
 USER = input("Mode: ")
 MODE = input("dark/light: ")
+ 
