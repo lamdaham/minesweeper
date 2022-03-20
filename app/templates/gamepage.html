@@ -30,7 +30,10 @@
         </nav>
   </head>
   <body style="background: {{colors[0]}}; color: {{colors[1]}};">
-    <table id="board"></table>
+    <div class="gameboard">
+    <table id="board">
+    </table>
+    </div>
     <script>
       var varone = {{ difficulty|tojson }}
       var vartwo = {{ user_priv|tojson }};

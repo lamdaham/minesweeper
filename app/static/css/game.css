@@ -1,9 +1,17 @@
+html, body {
+    height:100%;
+    margin:0;
+    padding:0;
+    font-size:90%;
+}
 table {
-  table-layout: fixed;
-  /*width: 70%;*/
-  height: 80%;
-  border-collapse: collapse;
-  border: 3px solid purple;
-  margin-right: auto;
+    border-collapse: collapse;
+    position: static;
+    width: auto;
+    margin-right: 300px;
+}
+
+th {
+  
   margin-bottom: auto;
 }
