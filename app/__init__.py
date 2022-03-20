@@ -146,7 +146,7 @@ def settings():
             user = session.get("username")
             mode = db_builder.get_mode(user)[0]
             colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
-            return render_template("settings.html", colors = colors)
+            return render_template("settings.html", colors = colors, mode = mode)
         else:
             return redirect("/")
     except:
@@ -161,7 +161,7 @@ def result():
             db_builder.change_difficulty(user, diff)
             mode = db_builder.get_mode(user)[0]
             colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
-            return render_template("settings.html", colors = colors)
+            return render_template("settings.html", colors = colors, mode = mode)
         else:
             return redirect("/")
     except:
@@ -175,7 +175,7 @@ def other_result():
             db_builder.change_mode(user)
             mode = db_builder.get_mode(user)[0]
             colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
-            return render_template("settings.html", colors = colors)
+            return render_template("settings.html", colors = colors, mode = mode)
         else:
             return redirect("/")
     #except:
