@@ -1,109 +1,110 @@
 import sqlite3
 import json
 
-DB_FILE="minesweeper.db"
-db = sqlite3.connect(DB_FILE, check_same_thread=False)
+class Builder:
+  def __init__(self):  
+    DB_FILE="minesweeper.db"
+    self.db = sqlite3.connect(DB_FILE, check_same_thread=False)
+    self.dbsetup()
 
-def dbsetup():
-  c = db.cursor()               #facilitate db ops -- you will use cursor to trigger db events
-  
-  command = "CREATE TABLE IF NOT EXISTS user (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT, mode TEXT, difficulty TEXT, win_streak INTEGER)"
-  c.execute(command)      # test SQL stmt in sqlite3 shell, save as string
+  def dbsetup(self):
+    c = self.db.cursor()               #facilitate db ops -- you will use cursor to trigger db events
+    
+    command = "CREATE TABLE IF NOT EXISTS user (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT, mode TEXT, difficulty TEXT, win_streak INTEGER)"
+    c.execute(command)      # test SQL stmt in sqlite3 shell, save as string
 
-  db.commit() #save changes
+    self.db.commit() #save changes
 
-dbsetup()
+  # Authorization, username, and user_id functions
+  ##
 
-# Authorization, username, and user_id functions
-##
+  # Adds to the user database if the username is availible
+  # Returns an error message to display if there was an issue or an empty string otherwise
+  def signup(self, username, password):
+    c = self.db.cursor()
 
-# Adds to the user database if the username is availible
-# Returns an error message to display if there was an issue or an empty string otherwise
-def signup(username, password):
-  c = db.cursor()
+    c.execute("""SELECT username FROM user WHERE username=?""",[username])
+    result = c.fetchone()
 
-  c.execute("""SELECT username FROM user WHERE username=?""",[username])
-  result = c.fetchone()
+    if result:
+        return "Error: Username already exists"
 
-  if result:
-      return "Error: Username already exists"
+    else:
+        c.execute('INSERT INTO user VALUES (null, ?, ?, ?, ?, ?)', (username, password, "light", "script kiddie", 0))
+        
+        self.db.commit()
+        # Uses empty quotes since it will return false when checked as a boolean
+        return  ""
 
-  else:
-      c.execute('INSERT INTO user VALUES (null, ?, ?, ?, ?, ?)', (username, password, "light", "script kiddie", 0))
-      
-      db.commit()
-      # Uses empty quotes since it will return false when checked as a boolean
-      return  ""
+  # Tries to check if the username and password are valid
+  def login(self, username, password):
+    c = self.db.cursor()
 
-# Tries to check if the username and password are valid
-def login(username, password):
-  c = db.cursor()
+    c.execute("""SELECT username FROM user WHERE username=? AND password=?""",[username, password])
+    result = c.fetchone()
 
-  c.execute("""SELECT username FROM user WHERE username=? AND password=?""",[username, password])
-  result = c.fetchone()
+    if result:
+        ##access this specifc user data
+        return False
 
-  if result:
-      ##access this specifc user data
-      return False
+    else:
+        return True
 
-  else:
-      return True
+  def get_mode(self, username):
+    c = self.db.cursor()
 
-def get_mode(username):
-  c = db.cursor()
+    c.execute("""SELECT mode FROM user WHERE username=?""",[username])
+    result = c.fetchone()
 
-  c.execute("""SELECT mode FROM user WHERE username=?""",[username])
-  result = c.fetchone()
+    return result
 
-  return result
+  def get_difficulty(self, username):
+    c = self.db.cursor()
 
-def get_difficulty(username):
-  c = db.cursor()
+    c.execute("""SELECT difficulty FROM user WHERE username=?""",[username])
+    result = c.fetchone()
 
-  c.execute("""SELECT difficulty FROM user WHERE username=?""",[username])
-  result = c.fetchone()
+    return result
 
-  return result
+  def change_mode(self, username):
+    c = self.db.cursor()
 
-def change_mode(username):
-  c = db.cursor()
+    c.execute("""SELECT mode FROM user WHERE username=?""",[username])
+    result = c.fetchone()
 
-  c.execute("""SELECT mode FROM user WHERE username=?""",[username])
-  result = c.fetchone()
+    if result[0] == "dark":
+      c.execute('UPDATE user SET mode = ? WHERE username = ?', ("light", username))
+    else:
+      c.execute('UPDATE user SET mode = ? WHERE username = ?', ("dark", username))
+    self.db.commit()
 
-  if result[0] == "dark":
-    c.execute('UPDATE user SET mode = ? WHERE username = ?', ("light", username))
-  else:
-    c.execute('UPDATE user SET mode = ? WHERE username = ?', ("dark", username))
-  db.commit()
+  def change_difficulty(self, username, new_diff):
+    c = self.db.cursor()
+    
+    c.execute('UPDATE user SET difficulty = ? WHERE username = ?', (new_diff, username))
 
-def change_difficulty(username, new_diff):
-  c = db.cursor()
-  
-  c.execute('UPDATE user SET difficulty = ? WHERE username = ?', (new_diff, username))
+    self.db.commit()
 
-  db.commit()
+  def increase_win_streak(self, username):
+    c = self.db.cursor()
 
-def increase_win_streak(username):
-  c = db.cursor()
+    c.execute("""SELECT win_streak FROM user WHERE username=?""",[username])
+    result = c.fetchone()[0] + 1
+    
+    c.execute('UPDATE user SET win_streak = ? WHERE username = ?', (result, username))
 
-  c.execute("""SELECT win_streak FROM user WHERE username=?""",[username])
-  result = c.fetchone()[0] + 1
-  
-  c.execute('UPDATE user SET win_streak = ? WHERE username = ?', (result, username))
+    self.db.commit()
 
-  db.commit()
+    return result
 
-  return result
+  def reset_win_streak(self, username):
+    c = self.db.cursor()
 
-def reset_win_streak(username):
-  c = db.cursor()
+    c.execute("""SELECT win_streak FROM user WHERE username=?""",[username])
+    result = c.fetchone()[0]
 
-  c.execute("""SELECT win_streak FROM user WHERE username=?""",[username])
-  result = c.fetchone()[0]
+    c.execute('UPDATE user SET win_streak = ? WHERE username = ?', (0, username))
 
-  c.execute('UPDATE user SET win_streak = ? WHERE username = ?', (0, username))
+    self.db.commit()
 
-  db.commit()
-
-  return result
+    return result

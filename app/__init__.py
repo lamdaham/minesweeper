@@ -1,5 +1,11 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-import db_builder
+#import db_builder
+
+with open("app/db_builder.py", "rb") as source_file:
+    code = compile(source_file.read(), "app/db_builder.py", "exec")
+exec(code)
+
+db_builder = Builder()
 
 app = Flask(__name__)
 app.secret_key = 'minesweeper'
