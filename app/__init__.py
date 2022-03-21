@@ -119,7 +119,8 @@ def won():
             user = session.get("username")
             mode = db_builder.get_mode(user)[0]
             colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
-            return render_template("won.html", colors = colors)
+            streak = db_builder.increase_win_streak(user)
+            return render_template("won.html", colors = colors, streak = streak)
         else:
             return redirect('/')
     except:
@@ -133,7 +134,8 @@ def lost():
             user = session.get("username")
             mode = db_builder.get_mode(user)[0]
             colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
-            return render_template("lost.html", colors = colors)
+            streak = db_builder.reset_win_streak(user)
+            return render_template("lost.html", colors = colors, streak = streak)
         else:
             return redirect('/')
     except:
