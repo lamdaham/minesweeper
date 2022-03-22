@@ -7,8 +7,8 @@ html, body {
 table {
     border-collapse: collapse;
     position: static;
-    width: auto;
-    margin-right: 300px;
+    width: 50%;
+    /*margin-right: 300px;*/
 }
 
 th {
