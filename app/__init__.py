@@ -1,6 +1,14 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import db_builder
 from flask_mobility import Mobility
+#import db_builder
+
+with open("app/db_builder.py", "rb") as source_file:
+    code = compile(source_file.read(), "app/db_builder.py", "exec")
+exec(code)
+
+db_builder = Builder()
+
 
 app = Flask(__name__)
 app.secret_key = 'minesweeper'
@@ -187,4 +195,4 @@ def other_result():
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
     app.debug = True
-    app.run()
+    app.run(host='0.0.0.0')
