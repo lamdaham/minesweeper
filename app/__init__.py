@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import db_builder
-from flask_mobility import Mobility
+# from flask_mobility import Mobility
 #import db_builder
 
 with open("app/db_builder.py", "rb") as source_file:
