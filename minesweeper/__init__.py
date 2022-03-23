@@ -3,7 +3,7 @@ import db_builder
 # from flask_mobility import Mobility
 #import db_builder
 
-with open("app/db_builder.py", "rb") as source_file:
+with open("minesweeper/db_builder.py", "rb") as source_file:
     code = compile(source_file.read(), "app/db_builder.py", "exec")
 exec(code)
 
