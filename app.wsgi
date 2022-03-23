@@ -3,7 +3,7 @@ import sys
 import logging
 import os
 logging.basicConfig(stream=sys.stderr)
-sys.path.insert(0,"/var/www/minesweeper/")
+sys.path.insert(0,"/var/www/app/")
 
-from minesweeper import app as application
+from app import app as application
 application.secret_key = "minesweeper"
