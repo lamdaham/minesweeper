@@ -10,7 +10,7 @@ class Builder:
   def dbsetup(self):
     c = self.db.cursor()               #facilitate db ops -- you will use cursor to trigger db events
     
-    command = "CREATE TABLE IF NOT EXISTS user (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT, mode TEXT, difficulty TEXT, win_streak INTEGER)"
+    command = "CREATE TABLE IF NOT EXISTS user (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT, mode TEXT, difficulty TEXT, monkey_win_streak INTEGER, kiddy_win_streak INTEGER)"
     c.execute(command)      # test SQL stmt in sqlite3 shell, save as string
 
     self.db.commit() #save changes
@@ -30,7 +30,7 @@ class Builder:
         return "Error: Username already exists"
 
     else:
-        c.execute('INSERT INTO user VALUES (null, ?, ?, ?, ?, ?)', (username, password, "light", "script kiddie", 0))
+        c.execute('INSERT INTO user VALUES (null, ?, ?, ?, ?, ?, ?)', (username, password, "light", "script kiddie", 0, 0))
         
         self.db.commit()
         # Uses empty quotes since it will return false when checked as a boolean
@@ -85,13 +85,19 @@ class Builder:
 
     self.db.commit()
 
-  def increase_win_streak(self, username):
+  def increase_win_streak(self, username, diff):
     c = self.db.cursor()
 
-    c.execute("""SELECT win_streak FROM user WHERE username=?""",[username])
-    result = c.fetchone()[0] + 1
+    if diff == "script kiddie":
+      c.execute("""SELECT kiddy_win_streak FROM user WHERE username=?""",[username])
+      result = c.fetchone()[0] + 1  
+      c.execute('UPDATE user SET kiddy_win_streak = ? WHERE username = ?', (result, username))
+    else:
+      c.execute("""SELECT monkey_win_streak FROM user WHERE username=?""",[username])
+      result = c.fetchone()[0] + 1
+      c.execute('UPDATE user SET monkey_win_streak = ? WHERE username = ?', (result, username))
+
     
-    c.execute('UPDATE user SET win_streak = ? WHERE username = ?', (result, username))
 
     self.db.commit()
 
@@ -99,12 +105,45 @@ class Builder:
 
   def reset_win_streak(self, username):
     c = self.db.cursor()
+    if diff == "script kiddie":
+      c.execute("""SELECT kiddy_win_streak FROM user WHERE username=?""",[username])
+      result = c.fetchone()[0]
 
-    c.execute("""SELECT win_streak FROM user WHERE username=?""",[username])
-    result = c.fetchone()[0]
+      c.execute('UPDATE user SET kiddy_win_streak = ? WHERE username = ?', (0, username))
+    else:
+      c.execute("""SELECT monkey_win_streak FROM user WHERE username=?""",[username])
+      result = c.fetchone()[0]
 
-    c.execute('UPDATE user SET win_streak = ? WHERE username = ?', (0, username))
+      c.execute('UPDATE user SET monkey_win_streak = ? WHERE username = ?', (0, username))
 
     self.db.commit()
 
     return result
+
+  def get_scores(self):
+    c = self.db.cursor()
+
+    c.execute("""SELECT * FROM user""")
+
+    users = c.fetchall()
+
+    kiddy_scores = []
+    monkey_scores = []
+
+    for x in users:
+      p = []
+      p.append(x[1])
+      p.append(x[5])
+      monkey_scores.append(p)
+      p = []
+      p.append(x[1])
+      p.append(x[6])
+      kiddy_scores.append(p)
+      
+
+    kiddy_scores.sort(key=lambda x:(-x[1],x[0]))
+    monkey_scores.sort(key=lambda x:(-x[1],x[0]))
+    print(kiddy_scores)
+    print(monkey_scores)
+    print(users)
+    return kiddy_scores, monkey_scores
