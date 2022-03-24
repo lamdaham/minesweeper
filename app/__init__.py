@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 #import db_builder
 # from flask_mobility import Mobility
-#import db_builder
+import db_builder
 
 with open("app/db_builder.py", "rb") as source_file:
     code = compile(source_file.read(), "app/db_builder.py", "exec")
@@ -108,12 +108,14 @@ def menu():
 
 @app.route('/gamepage')
 def about():
+    print(db_builder.get_scores())
     try:
         if logged_in():
             user = session.get("username")
             mode = db_builder.get_mode(user)[0]
             difficulty = db_builder.get_difficulty(user)[0]
             colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
+
             return render_template("gamepage.html", mode = mode, user_priv = user, difficulty = difficulty, colors = colors)
         else:
             return redirect('/')
@@ -122,17 +124,18 @@ def about():
 
 @app.route('/won')
 def won():
-    try:
+    # try:
         if logged_in():
             #increase win streak by one
             user = session.get("username")
             mode = db_builder.get_mode(user)[0]
+            difficulty = db_builder.get_difficulty(user)[0]
             colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
-            streak = db_builder.increase_win_streak(user)
+            streak = db_builder.increase_win_streak(user, difficulty)
             return render_template("won.html", colors = colors, streak = streak)
         else:
             return redirect('/')
-    except:
+    # except:
         return render_template("error.html")
 
 @app.route('/lost')
@@ -142,8 +145,9 @@ def lost():
             #set win streak to zero
             user = session.get("username")
             mode = db_builder.get_mode(user)[0]
+            difficulty = db_builder.get_difficulty(user)[0]
             colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
-            streak = db_builder.reset_win_streak(user)
+            streak = db_builder.reset_win_streak(user, difficulty)
             return render_template("lost.html", colors = colors, streak = streak)
         else:
             return redirect('/')
@@ -165,7 +169,7 @@ def settings():
 
 @app.route('/change_diff', methods=['GET', 'POST'])
 def result():
-    try:
+    # try:
         if logged_in():
             user = session.get("username")
             diff = request.form['button']
@@ -175,7 +179,7 @@ def result():
             return render_template("settings.html", colors = colors, mode = mode)
         else:
             return redirect("/")
-    except:
+    # except:
         return render_template("error.html")
 
 @app.route('/change_mode', methods=['GET', 'POST'])
@@ -191,6 +195,18 @@ def other_result():
             return redirect("/")
     #except:
         #return render_template("error.html")
+
+@app.route('/leaderboard', methods=['GET'])
+def leaderboard():
+    if logged_in():
+        kiddy, monkey = db_builder.get_scores()
+        user = session.get("username")
+        mode = db_builder.get_mode(user)[0]
+        colors = ["#222222", "#ffffff"] if mode == "dark" else ["#ffffff", "black"]
+        return render_template("leaderboard.html", kiddy = kiddy, monkey = monkey, colors = colors, mode = mode)
+    else:
+        return redirect("/")
+
         
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
