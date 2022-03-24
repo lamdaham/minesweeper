@@ -9,11 +9,20 @@ Begin Devlog:
 alejandroA -- 2022-02-03 10:17
   Initial repo setup, flag added
 
+ivanL -- 2022-02-03 10:44
+  Made draft of the site on paper and communicated with group memebrs
+
 alejandroA -- 2022-02-04 9:30
   Design doc written, templates + static
 
+ivanL -- 2022-02-04 9:23
+  Started on templates and __init__.py
+
 alejandroA -- 2022-02-07 3:00
   Base minesweeper code added
+
+ivanL -- 2022-02-08 8:58
+  Start to link bootstrap files to html
 
 alejandroA -- 2022-02-08 9:00
   Set up devlog, create requirements.txt, remove test.py
@@ -23,3 +32,45 @@ alejandroA -- 2022-02-09 1:45
 
 alejandroA -- 2022-02-10 9:00
   Added image cohesion into base game.py - now returns list of lists with image file names as elems
+
+ivanL -- 2022-02-10 4:11
+  created the basic outline and linkage of pages
+
+ivanL -- 2022-02-14 9:20
+  Found major problem in code, need to replan the game file. We will change python file to js to make transition more fluid between front end and backend
+
+ivanL -- 2022-02-16 9:23
+  Finished coding the base js game file. Still need debugging.
+
+ivanL -- 2022-02-18 9:31
+  Finished the game with Alejandro, fully working
+
+ivanL -- 2022-02-21 
+  BREAK 
+
+ivanL -- 2022-02-28
+  Discussed next steps and what we needed get done. Delegated task to group memebrs
+
+ivanL -- 2022-02-30
+  Finished working on button css, going to work on Leaderboard
+
+ivanL -- 2022-03-03
+  Started to work on getting information from database and storing into list
+
+ivanL -- 2022-03-07
+  Modified database file to support multi mode scores
+
+ivanL -- 2022-03-09
+  Finished the leaderboard functions
+
+ivanL -- 2022-03-15
+  Attached Bootstrap CSS to the page. Added it to the navbar as well.
+
+ivanL -- 2022-03-21
+  Started working on provisioning the Droplet
+
+ivanL -- 2022-03-22 
+  Encountered problems on droplet, collaborated with Alejandro to remedy the problem
+
+ivanL -- 2022-03-23
+  Droplet is provisioned.
