@@ -3,7 +3,7 @@ import json
 
 class Builder:
   def __init__(self):  
-    DB_FILE="var/www/app/app/minesweeper.db"
+    DB_FILE="minesweeper.db"
     self.db = sqlite3.connect(DB_FILE, check_same_thread=False)
     self.dbsetup()
 
@@ -143,7 +143,4 @@ class Builder:
 
     kiddy_scores.sort(key=lambda x:(-x[1],x[0]))
     monkey_scores.sort(key=lambda x:(-x[1],x[0]))
-    print(kiddy_scores)
-    print(monkey_scores)
-    print(users)
     return kiddy_scores, monkey_scores

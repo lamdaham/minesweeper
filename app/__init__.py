@@ -3,8 +3,8 @@ from flask import Flask, render_template, request, session, redirect, url_for
 # from flask_mobility import Mobility
 #import db_builder
 
-with open("var/www/app/app/db_builder.py", "rb") as source_file:
-    code = compile(source_file.read(), "var/www/app/app/db_builder.py", "exec")
+with open("app/db_builder.py", "rb") as source_file:
+    code = compile(source_file.read(), "app/db_builder.py", "exec")
 exec(code)
 
 db_builder = Builder()
@@ -211,4 +211,4 @@ def leaderboard():
 if __name__ == "__main__": #false if this file imported as module
     #enable debugging, auto-restarting of server when this file is modified
     app.debug = True
-    app.run(host='0.0.0.0')
+    app.run()
