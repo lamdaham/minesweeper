@@ -103,7 +103,7 @@ class Builder:
 
     return result
 
-  def reset_win_streak(self, username):
+  def reset_win_streak(self, username, diff):
     c = self.db.cursor()
     if diff == "script kiddie":
       c.execute("""SELECT kiddy_win_streak FROM user WHERE username=?""",[username])

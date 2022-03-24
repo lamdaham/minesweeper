@@ -140,7 +140,7 @@ def won():
 
 @app.route('/lost')
 def lost():
-    try:
+    # try:
         if logged_in():
             #set win streak to zero
             user = session.get("username")
@@ -151,7 +151,7 @@ def lost():
             return render_template("lost.html", colors = colors, streak = streak)
         else:
             return redirect('/')
-    except:
+    # except:
         return render_template("error.html")
 
 @app.route('/settings', methods=['GET', 'POST'])
