@@ -36,41 +36,89 @@ alejandroA -- 2022-02-10 9:00
 ivanL -- 2022-02-10 4:11
   created the basic outline and linkage of pages
 
+alejandroA -- 2022-02-12
+  HTML development
+
+alejandroA -- 2022-02-13
+  Python streamlining --> how do we do clicks guys
+
 ivanL -- 2022-02-14 9:20
   Found major problem in code, need to replan the game file. We will change python file to js to make transition more fluid between front end and backend
+
+alejandroA -- 2022-02-15
+  A lot of coding.
+
+alejandroA -- 2022-02-16
+  Even more coding. Base js game file basically done.
 
 ivanL -- 2022-02-16 9:23
   Finished coding the base js game file. Still need debugging.
 
+alejandroA -- 2022-02-08 9:00
+  Clicks work now!
+
 ivanL -- 2022-02-18 9:31
   Finished the game with Alejandro, fully working
+
+alejandroA -- 2022-02-08 9:00
+  Game works in console, somewhat online.
 
 ivanL -- 2022-02-21 
   BREAK 
 
+alejandroA -- 2022-02-21
+  BREAK
+
 ivanL -- 2022-02-28
   Discussed next steps and what we needed get done. Delegated task to group memebrs
+
+alejandroA -- 2022-02-08 9:00
+  
 
 ivanL -- 2022-02-30
   Finished working on button css, going to work on Leaderboard
 
+alejandroA -- 2022-02-08 9:00
+  Winning and losing works now!
+
 ivanL -- 2022-03-03
   Started to work on getting information from database and storing into list
+
+alejandroA -- 2022-02-08 9:00
+  Database functions work (other than leaderboard-related ones)
 
 ivanL -- 2022-03-07
   Modified database file to support multi mode scores
 
+alejandroA -- 2022-02-08 9:00
+  Modified 
+
 ivanL -- 2022-03-09
   Finished the leaderboard functions
+
+alejandroA -- 2022-02-08 9:00
+  Finished js-flask-html coherence.
 
 ivanL -- 2022-03-15
   Attached Bootstrap CSS to the page. Added it to the navbar as well.
 
+alejandroA -- 2022-02-08 9:00
+  Game runs perfectly on development server.
+
 ivanL -- 2022-03-21
   Started working on provisioning the Droplet
+
+alejandroA -- 2022-03-21
+  Droplet is setup with current project progress
 
 ivanL -- 2022-03-22 
   Encountered problems on droplet, collaborated with Alejandro to remedy the problem
 
+alejandroA -- 2022-03-22
+  Manually put in new html and js code onto the droplet.
+
 ivanL -- 2022-03-23
   Droplet is provisioned.
+
+alejandroA -- 2022-03-24 1:15
+  Droplet is fully setup and active, filled leaderboard.
