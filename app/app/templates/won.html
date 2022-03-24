@@ -7,6 +7,8 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <style>
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8" />
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -18,6 +20,9 @@
           <li class="nav-item active">
             <a class="nav-link" href="/gamepage">Game</a>
           </li>
+<li class="nav-item">            
+<a class="nav-link" href="/leaderboard">Leaderboard</a>          
+</li>
           <li class="nav-item active">
             <a class="nav-link" href="/settings">Settings</a>
           </li>
@@ -29,7 +34,7 @@
     </nav>
   </head>
   <body style="background: {{colors[0]}}; color: {{colors[1]}};">
-    <br>
-    <h1 style="text-align: center;">You saved your computer! Win Streak: {{ streak }} Wins!</h1>
+    <br><br>
+    <h1 style="text-align: center"><strong>You saved your computer! Win Streak: {{ streak }} Win(s)!</strong></h1>
   </body>
 </html>

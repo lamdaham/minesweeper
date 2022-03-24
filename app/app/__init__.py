@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 #import db_builder
 # from flask_mobility import Mobility
-import db_builder
+#import db_builder
 
-with open("app/db_builder.py", "rb") as source_file:
-    code = compile(source_file.read(), "app/db_builder.py", "exec")
+with open("var/www/app/app/db_builder.py", "rb") as source_file:
+    code = compile(source_file.read(), "var/www/app/app/db_builder.py", "exec")
 exec(code)
 
 db_builder = Builder()
@@ -140,7 +140,7 @@ def won():
 
 @app.route('/lost')
 def lost():
-    # try:
+    try:
         if logged_in():
             #set win streak to zero
             user = session.get("username")
@@ -151,7 +151,7 @@ def lost():
             return render_template("lost.html", colors = colors, streak = streak)
         else:
             return redirect('/')
-    # except:
+    except:
         return render_template("error.html")
 
 @app.route('/settings', methods=['GET', 'POST'])

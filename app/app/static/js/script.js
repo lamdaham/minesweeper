@@ -330,7 +330,7 @@ function display(arr){
   for (let i = 0; i < arr.length; i++) {
       myHTML += "<tr>"
       for (let j = 0; j < arr[i].length; j++) {
-      	myHTML += "<td> <img src='static/images/" + arr[i][j] + "' style='width: 100%;'></img></td>"
+      	myHTML += "<td style='padding: 0; margin: 0;'><img src='static/images/" + arr[i][j] + "' style='width: 100%;'></img></td>"
       }
       myHTML += "</tr>"
   }
@@ -342,7 +342,7 @@ function alter_board(arr){
 	var wrapper = document.getElementById("board");
   for (let i = 0; i < arr.length; i++) {
       for (let j = 0; j < arr[i].length; j++) {
-      	wrapper.rows[j].cells[i].innerHTML = "<td> <img src='static/images/" + arr[i][j] + "' style='width: 100%;'></img></td>"
+      	wrapper.rows[j].cells[i].innerHTML = "<td style='padding: 0; margin: 0;'><img src='static/images/" + arr[i][j] + "' style='width: 100%;'></img></td>"
       }
   }
 }
@@ -378,7 +378,7 @@ tbody.addEventListener('contextmenu', function (e) {
   const mouse_y = cell.cellIndex;
 
   gameboard = flag(gameboard, mouse_x, mouse_y); //i and j of the gameboard array
-  if (flagged_mines === 10) {
+  if (flagged_mines === num_of_mines) {
     window.location.replace("/won");
   }
   alter_board(adjusted_board(gameboard));

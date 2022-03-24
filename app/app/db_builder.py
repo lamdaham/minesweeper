@@ -3,7 +3,7 @@ import json
 
 class Builder:
   def __init__(self):  
-    DB_FILE="minesweeper.db"
+    DB_FILE="var/www/app/app/minesweeper.db"
     self.db = sqlite3.connect(DB_FILE, check_same_thread=False)
     self.dbsetup()
 
