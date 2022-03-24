@@ -10,7 +10,7 @@ Traditional minesweeper game with a White Hat hacker theme, account functionalit
 ---
 ## Collaborators
 Ivan Lam (PM) <br>
-Alejandro Alonso (Devo) <br>
+Alejandro Alonso (DEVO) <br>
 Theo Fahey (Devo) <br>
 Sadid Ethun (Devo)
 
