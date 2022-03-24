@@ -54,13 +54,13 @@ alejandroA -- 2022-02-16
 ivanL -- 2022-02-16 9:23
   Finished coding the base js game file. Still need debugging.
 
-alejandroA -- 2022-02-08 9:00
+alejandroA -- 2022-02-17
   Clicks work now!
 
 ivanL -- 2022-02-18 9:31
   Finished the game with Alejandro, fully working
 
-alejandroA -- 2022-02-08 9:00
+alejandroA -- 2022-02-18
   Game works in console, somewhat online.
 
 ivanL -- 2022-02-21 
@@ -72,37 +72,37 @@ alejandroA -- 2022-02-21
 ivanL -- 2022-02-28
   Discussed next steps and what we needed get done. Delegated task to group memebrs
 
-alejandroA -- 2022-02-08 9:00
-  
+alejandroA -- 2022-02-29
+  Added in win streak feature.
 
 ivanL -- 2022-02-30
   Finished working on button css, going to work on Leaderboard
 
-alejandroA -- 2022-02-08 9:00
-  Winning and losing works now!
+alejandroA -- 2022-03-01
+  Winning and losing takes you to different pages now. It works!
 
 ivanL -- 2022-03-03
   Started to work on getting information from database and storing into list
 
-alejandroA -- 2022-02-08 9:00
+alejandroA -- 2022-03-04
   Database functions work (other than leaderboard-related ones)
 
 ivanL -- 2022-03-07
   Modified database file to support multi mode scores
 
-alejandroA -- 2022-02-08 9:00
-  Modified 
+alejandroA -- 2022-02-09
+  A lot of code. Also droplets suck.
 
 ivanL -- 2022-03-09
   Finished the leaderboard functions
 
-alejandroA -- 2022-02-08 9:00
+alejandroA -- 2022-03-12
   Finished js-flask-html coherence.
 
 ivanL -- 2022-03-15
   Attached Bootstrap CSS to the page. Added it to the navbar as well.
 
-alejandroA -- 2022-02-08 9:00
+alejandroA -- 2022-03-20
   Game runs perfectly on development server.
 
 ivanL -- 2022-03-21
