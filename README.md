@@ -1,8 +1,13 @@
 # Minesweeper: White Hat Edition by Team Beautiful Men
 
+## Web Location: [Operation White Hat](http://164.92.149.123/) 
+Exact URL: http://164.92.149.123/
+
+---
 ## Description
 Traditional minesweeper game with a White Hat hacker theme, account functionality, light/dark mode, and leaderboards.
 
+---
 ## Collaborators
 Ivan Lam (PM) <br>
 Alejandro Alonso (Devo) <br>
@@ -30,7 +35,6 @@ Install project dependencies.
 Run the app.
 
     $ (your_env_name) python3 main.py
-
 
 ---
 ## Mentions
