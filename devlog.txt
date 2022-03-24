@@ -89,18 +89,36 @@ alejandroA -- 2022-03-04
 
 ivanL -- 2022-03-07
   Modified database file to support multi mode scores
+  
+sadidE -- 2022-03-07
+  Made the navbars for every page.
 
-alejandroA -- 2022-02-09
+alejandroA -- 2022-03-09
   A lot of code. Also droplets suck.
 
 ivanL -- 2022-03-09
   Finished the leaderboard functions
+  
+sadidE -- 2022-03-09
+  Made the database and login and register pages.
+  
+sadidE -- 2022-03-11
+  Made the logout function.
 
 alejandroA -- 2022-03-12
   Finished js-flask-html coherence.
+  
+sadidE -- 2022-03-14
+  Made the menu page.
 
 ivanL -- 2022-03-15
   Attached Bootstrap CSS to the page. Added it to the navbar as well.
+  
+sadidE -- 2022-03-16
+  Added bootstrap and updated the menu page.
+
+sadidE -- 2022-03-18
+  Resized the board to show the whole board without scrolling. 
 
 alejandroA -- 2022-03-20
   Game runs perfectly on development server.
@@ -110,6 +128,9 @@ ivanL -- 2022-03-21
 
 alejandroA -- 2022-03-21
   Droplet is setup with current project progress
+  
+sadidE -- 2022-03-21
+  Added bootstrap to the game board.
 
 ivanL -- 2022-03-22 
   Encountered problems on droplet, collaborated with Alejandro to remedy the problem
@@ -119,6 +140,9 @@ alejandroA -- 2022-03-22
 
 ivanL -- 2022-03-23
   Droplet is provisioned.
+
+sadidE -- 2022-03-23
+  Made final bootstrap changes to make website look nicer.
 
 alejandroA -- 2022-03-24 1:15
   Droplet is fully setup and active, filled leaderboard.
