@@ -92,6 +92,9 @@ ivanL -- 2022-03-07
   
 sadidE -- 2022-03-07
   Made the navbars for every page.
+  
+faheyT -- 2022-03-07
+Added basic dropdown menu's as well as a Bootstrap skeleton
 
 alejandroA -- 2022-03-09
   A lot of code. Also droplets suck.
@@ -105,6 +108,9 @@ sadidE -- 2022-03-09
 sadidE -- 2022-03-11
   Made the logout function.
 
+faheyT -- 2022-03-12
+  Created basic descriptions for the menu
+  
 alejandroA -- 2022-03-12
   Finished js-flask-html coherence.
   
@@ -116,6 +122,9 @@ ivanL -- 2022-03-15
   
 sadidE -- 2022-03-16
   Added bootstrap and updated the menu page.
+ 
+faheyT -- 2022-03-17
+  Designed the Win and Loss screens
 
 sadidE -- 2022-03-18
   Resized the board to show the whole board without scrolling. 
